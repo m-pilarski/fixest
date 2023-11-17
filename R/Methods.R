@@ -2592,17 +2592,17 @@ predict.fixest = function(object, newdata, type = c("response", "link"), se.fit 
             mm_info = object$model_matrix_info
             # The order of creation is exactly the same (same fun used),
             # so the two mm_info are identical in structure
-            for(i in seq_along(mm_info)){
-                mm_new_i = mm_info_new[[i]]
-                mm_i = mm_info[[i]]
-                if("coef_names_full" %in% names(mm_i)){
-                    pblm = setdiff(mm_new_i$coef_names_full, mm_i$coef_names_full)
-                    if(length(pblm) > 0){
-                        stop(dsb("In i(), predictions cannot be done for values that were not present at estimation time.",
-                                 " It concerns the value.[*s_, 3KO, C?pblm]."))
-                    }
-                }
-            }
+            # for(i in seq_along(mm_info)){
+            #     mm_new_i = mm_info_new[[i]]
+            #     mm_i = mm_info[[i]]
+            #     if("coef_names_full" %in% names(mm_i)){
+            #         pblm = setdiff(mm_new_i$coef_names_full, mm_i$coef_names_full)
+            #         if(length(pblm) > 0){
+            #             stop(dsb("In i(), predictions cannot be done for values that were not present at estimation time.",
+            #                      " It concerns the value.[*s_, 3KO, C?pblm]."))
+            #         }
+            #     }
+            # }
         }
 
         var_keep = intersect(names(coef), colnames(matrix_linear))
